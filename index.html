@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,547 +17,242 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
   
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              200: '#fbcfe8',
+              300: '#f9a8d4',
+              400: '#f472b6',
+              500: '#ec4899',
+              600: '#db2777',
+              700: '#be185d',
+              800: '#9d174d',
+              900: '#831843',
+            }
+          },
+          fontFamily: {
+            'satisfy': ['Satisfy', 'cursive'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease forwards',
+            'float': 'float 6s ease-in-out infinite',
+            'bounce-slow': 'bounce 3s infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
   
   <style>
-    :root {
-      --primary-color: #4361ee;
-      --secondary-color: #3f37c9;
-      --accent-color: #f72585;
-      --light-color: #f8f9fa;
-      --dark-color: #212529;
-      --text-color: #333;
-      --text-light: #6c757d;
-      --card-bg: #ffffff;
-      --body-bg: #f8f9fa;
-      --header-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
-      --border-radius: 12px;
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
-
-    [data-bs-theme="dark"] {
-      --primary-color: #4cc9f0;
-      --secondary-color: #4361ee;
-      --accent-color: #f72585;
-      --light-color: #343a40;
-      --dark-color: #f8f9fa;
-      --text-color: #e9ecef;
-      --text-light: #adb5bd;
-      --card-bg: #2b3035;
-      --body-bg: #212529;
-      --header-gradient: linear-gradient(135deg, #3a0ca3 0%, #7209b7 100%);
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
     }
-
-    html {
-      scroll-behavior: smooth;
+    .dark ::-webkit-scrollbar-track {
+      background: #1f2937;
     }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--body-bg);
-      transition: var(--transition);
+    .dark ::-webkit-scrollbar-thumb {
+      background: #60a5fa;
     }
-
-    /* Header Section */
-    .header-section {
-      background: var(--header-gradient);
-      color: white;
-      padding: 6rem 0 4rem;
-      position: relative;
-      overflow: hidden;
+    
+    /* Gradient text effect */
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    .header-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-      opacity: 0.3;
+    
+    /* Card hover effects */
+    .card-hover {
+      transition: all 0.3s ease;
     }
-
-    .profile-avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid rgba(255, 255, 255, 0.2);
-      box-shadow: var(--shadow);
-      margin: 0 auto 1.5rem;
-      background-color: var(--light-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      color: var(--primary-color);
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 6.5rem;
-      right: 1.5rem;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
-      transition: var(--transition);
-      cursor: pointer;
-      z-index: 1030;
-      backdrop-filter: blur(10px);
-    }
-
-    .theme-toggle:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: rotate(30deg);
-    }
-
-    /* Navigation */
-    .sticky-nav {
-      background-color: var(--card-bg);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 1020;
-      transition: var(--transition);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      color: var(--primary-color) !important;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .nav-link {
-      color: var(--text-color) !important;
-      font-weight: 500;
-      transition: var(--transition);
-      border-radius: var(--border-radius);
-      margin: 0 0.25rem;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary-color) !important;
-      background-color: rgba(var(--primary-color-rgb), 0.1);
-    }
-
-    /* Section Styles */
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-      position: relative;
-      display: inline-block;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--accent-color);
-      border-radius: 2px;
-    }
-
-    /* Card Styles */
-    .custom-card {
-      background-color: var(--card-bg);
-      border: none;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .custom-card:hover {
+    .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
-
-    .card-icon {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-
-    /* Timeline */
+    
+    /* Timeline styling */
     .timeline {
       position: relative;
-      padding-left: 2rem;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
-      left: 7px;
+      left: 0;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--primary-color);
+      background: #3b82f6;
     }
-
     .timeline-item {
       position: relative;
+      padding-left: 2rem;
       margin-bottom: 2.5rem;
     }
-
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -2rem;
+      left: -6px;
       top: 5px;
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: var(--primary-color);
-      border: 3px solid var(--card-bg);
+      background: #3b82f6;
+      border: 3px solid white;
     }
-
-    .timeline-date {
-      display: inline-block;
-      background: var(--primary-color);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-family: 'Inter', sans-serif;
+    .dark .timeline-item::before {
+      border-color: #1f2937;
     }
-
-    /* Skills */
-    .skill-item {
-      margin-bottom: 1.5rem;
-    }
-
-    .skill-name {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .progress {
-      height: 8px;
-      border-radius: 10px;
-      background-color: rgba(var(--primary-color-rgb), 0.1);
-    }
-
-    .progress-bar {
-      background: var(--primary-color);
-      border-radius: 10px;
-    }
-
-    /* Portfolio */
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--border-radius);
-      height: 100%;
-    }
-
-    .project-image {
-      height: 200px;
-      background-color: var(--light-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: var(--primary-color);
-      transition: var(--transition);
-    }
-
-    .project-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
-
-    .project-card:hover .project-image {
-      transform: scale(1.05);
-    }
-
-    /* Buttons */
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      border-radius: var(--border-radius);
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      transition: var(--transition);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--secondary-color);
-      border-color: var(--secondary-color);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      border-radius: var(--border-radius);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-    }
-
-    /* Contact Info */
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-icon {
-      font-size: 1.5rem;
-      color: var(--primary-color);
-      margin-right: 1rem;
-      width: 40px;
-    }
-
-    /* Footer */
-    .footer {
-      background-color: var(--card-bg);
-      padding: 3rem 0;
-      border-top: 1px solid rgba(var(--primary-color-rgb), 0.1);
-    }
-
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-    }
-
-    p, li, span {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .lead {
-      font-weight: 500;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    /* Loading Spinner */
+    
+    /* Loading spinner */
     .spinner {
-      border: 4px solid rgba(var(--primary-color-rgb), 0.1);
-      border-left-color: var(--primary-color);
+      border: 4px solid rgba(59, 130, 246, 0.1);
+      border-left-color: #3b82f6;
       border-radius: 50%;
       width: 40px;
       height: 40px;
       animation: spin 1s linear infinite;
-      margin: 2rem auto;
     }
-
     @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .header-section {
-        padding: 4rem 0 2rem;
-      }
-      
-      .profile-avatar {
-        width: 140px;
-        height: 140px;
-        font-size: 3rem;
-      }
-      
-      .section {
-        padding: 3rem 0;
-      }
-      
-      .display-4 {
-        font-size: 2.5rem;
-      }
-      
-      .theme-toggle {
-        top: 5.5rem;
-        right: 1rem;
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .header-section {
-        padding: 3rem 0 1.5rem;
-      }
-      
-      .display-4 {
-        font-size: 2rem;
-      }
-      
-      .section {
-        padding: 2rem 0;
-      }
-      
-      .theme-toggle {
-        top: 4.5rem;
-        right: 0.8rem;
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-      }
-    }
   </style>
 </head>
-<body>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-inter transition-colors duration-300">
   <!-- Theme Toggle -->
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-    <i class="bi bi-sun-fill"></i>
+  <button class="fixed top-24 right-6 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-full w-12 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 shadow-lg transition-all duration-300 hover:rotate-12" id="themeToggle" aria-label="Toggle dark/light mode">
+    <i class="bx bx-sun text-xl dark:hidden"></i>
+    <i class="bx bx-moon text-xl hidden dark:block"></i>
   </button>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg sticky-nav">
-    <div class="container">
-      <a class="navbar-brand" href="#">Saksham Shekher</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#resume">Resume</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#portfolio">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
+  <nav class="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold gradient-text">Saksham</a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">About</a>
+          <a href="#resume" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">Resume</a>
+          <a href="#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">Portfolio</a>
+          <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300">Contact</a>
+        </div>
+        <button class="md:hidden text-gray-700 dark:text-gray-300">
+          <i class="bx bx-menu text-2xl"></i>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Header Section -->
-  <header class="header-section text-center">
-    <div class="container">
-      <div class="profile-avatar" aria-label="Profile picture">👨‍💻</div>
-      <h1 class="display-4 fw-bold mb-3">Saksham Shekher</h1>
-      <p class="lead mb-4">Web Developer | Open Source Enthusiast</p>
+  <header class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 dark:from-primary-900 dark:via-primary-800 dark:to-primary-700 text-white py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-float"></div>
+      <div class="absolute top-1/4 right-1/4 w-16 h-16 bg-white rounded-full animate-float" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-1/3 left-1/3 w-12 h-12 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
+      <div class="absolute bottom-10 right-10 w-14 h-14 bg-white rounded-full animate-float" style="animation-delay: 3s;"></div>
     </div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <div class="w-40 h-40 mx-auto mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-6xl animate-bounce-slow">
+        👨‍💻
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Saksham Shekher</h1>
+      <p class="text-xl md:text-2xl mb-6 font-light">Web Developer | Open Source Enthusiast</p>
+      <div class="flex justify-center space-x-4">
+        <a href="#portfolio" class="bg-white text-primary-700 hover:bg-gray-100 font-medium py-3 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg">View My Work</a>
+        <a href="#contact" class="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-full transition-all duration-300">Get In Touch</a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
   </header>
 
   <!-- Main Content -->
   <main>
     <!-- About Section -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="row align-items-center">
-          <div class="col-lg-8">
-            <div class="custom-card p-4 p-md-5 fade-in">
-              <p class="lead">Hello! I'm Saksham Shekher, currently pursuing Master of Computer Applications (MCA) at Ganpat University, Mehsana.</p>
-              <p>I specialize in web development with hands-on experience in HTML, CSS, JavaScript, Bootstrap, and Python. I enjoy building projects, solving problems, and contributing to open-source communities.</p>
-              <p>My goal is to create impactful digital experiences that are both functional and visually appealing.</p>
+    <section id="about" class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center relative">
+          <span class="gradient-text">About Me</span>
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent-500 rounded-full mt-2"></span>
+        </h2>
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-2/3">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg card-hover">
+              <p class="text-xl font-medium mb-6 text-gray-700 dark:text-gray-300">Hello! I'm <span class="font-satisfy text-primary-600 dark:text-primary-400 text-2xl">Saksham Shekher</span>, currently pursuing Master of Computer Applications (MCA) at Ganpat University, Mehsana.</p>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">I specialize in web development with hands-on experience in HTML, CSS, JavaScript, Bootstrap, and Python. I enjoy building projects, solving problems, and contributing to open-source communities.</p>
+              <p class="text-gray-600 dark:text-gray-400">My goal is to create impactful digital experiences that are both functional and visually appealing.</p>
             </div>
           </div>
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="row g-3 text-center">
-              <div class="col-6">
-                <div class="custom-card p-3 fade-in">
-                  <div class="card-icon">
-                    <i class="bi bi-code-slash"></i>
-                  </div>
-                  <h5>Web Development</h5>
-                </div>
+          <div class="lg:w-1/3 grid grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg card-hover">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-400 text-2xl">
+                <i class="bx bx-code-alt"></i>
               </div>
-              <div class="col-6">
-                <div class="custom-card p-3 fade-in">
-                  <div class="card-icon">
-                    <i class="bi bi-github"></i>
-                  </div>
-                  <h5>Open Source</h5>
-                </div>
+              <h3 class="font-bold text-lg mb-2">Web Development</h3>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg card-hover">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-400 text-2xl">
+                <i class="bx bxl-github"></i>
               </div>
-              <div class="col-6">
-                <div class="custom-card p-3 fade-in">
-                  <div class="card-icon">
-                    <i class="bi bi-puzzle"></i>
-                  </div>
-                  <h5>Problem Solving</h5>
-                </div>
+              <h3 class="font-bold text-lg mb-2">Open Source</h3>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg card-hover">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-400 text-2xl">
+                <i class="bx bx-puzzle"></i>
               </div>
-              <div class="col-6">
-                <div class="custom-card p-3 fade-in">
-                  <div class="card-icon">
-                    <i class="bi bi-people"></i>
-                  </div>
-                  <h5>Teamwork</h5>
-                </div>
+              <h3 class="font-bold text-lg mb-2">Problem Solving</h3>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg card-hover">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-400 text-2xl">
+                <i class="bx bx-group"></i>
               </div>
+              <h3 class="font-bold text-lg mb-2">Teamwork</h3>
             </div>
           </div>
         </div>
@@ -565,119 +260,124 @@
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">Resume</h2>
+    <section id="resume" class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center relative">
+          <span class="gradient-text">Resume</span>
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent-500 rounded-full mt-2"></span>
+        </h2>
         
-        <div class="text-center mb-5">
-          <button class="btn btn-primary btn-lg" id="downloadResume">
-            <i class="bi bi-download me-2"></i>Download Resume
+        <div class="text-center mb-12">
+          <button class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg flex items-center mx-auto" id="downloadResume">
+            <i class="bx bx-download mr-2"></i> Download Resume
           </button>
         </div>
         
-        <div class="row">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <!-- Education -->
-          <div class="col-lg-6 mb-5">
-            <div class="custom-card p-4 h-100 fade-in">
-              <h3 class="h4 mb-4"><i class="bi bi-book me-2"></i>Education</h3>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <span class="timeline-date">Aug 2025 — Present</span>
-                  <h4>Master of Computer Applications</h4>
-                  <p class="text-muted">Ganpat University, Mehsana</p>
-                </div>
-                <div class="timeline-item">
-                  <span class="timeline-date">Aug 2022 — Jun 2025</span>
-                  <h4>Bachelor of Commerce</h4>
-                  <p class="text-muted">L.P. Sahi College, Patna</p>
-                </div>
+          <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg card-hover">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="bx bx-book text-primary-600 dark:text-primary-400 mr-3"></i> Education
+            </h3>
+            <div class="timeline pl-6">
+              <div class="timeline-item">
+                <span class="inline-block bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full mb-2">Aug 2025 — Present</span>
+                <h4 class="text-xl font-bold mb-1">Master of Computer Applications</h4>
+                <p class="text-gray-600 dark:text-gray-400">Ganpat University, Mehsana</p>
+              </div>
+              <div class="timeline-item">
+                <span class="inline-block bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full mb-2">Aug 2022 — Jun 2025</span>
+                <h4 class="text-xl font-bold mb-1">Bachelor of Commerce</h4>
+                <p class="text-gray-600 dark:text-gray-400">L.P. Sahi College, Patna</p>
               </div>
             </div>
           </div>
           
           <!-- Experience -->
-          <div class="col-lg-6 mb-5">
-            <div class="custom-card p-4 h-100 fade-in">
-              <h3 class="h4 mb-4"><i class="bi bi-briefcase me-2"></i>Experience</h3>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <span class="timeline-date">Sep 2025</span>
-                  <h4>Web Developer Intern - CodeClause</h4>
-                  <p class="text-muted">Remote</p>
-                  <ul class="mt-2">
-                    <li>Developed a Weather Web App using HTML, JavaScript, Bootstrap, and OpenWeatherMap API</li>
-                    <li>Built a Shopping Cart Website with add/remove items and responsive UI</li>
-                  </ul>
-                </div>
-                <div class="timeline-item">
-                  <span class="timeline-date">2019 — Present</span>
-                  <h4>Open Source Contributor</h4>
-                  <p>Contributing to open source projects, enhancing problem-solving and coding skills.</p>
-                </div>
+          <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg card-hover">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="bx bx-briefcase text-primary-600 dark:text-primary-400 mr-3"></i> Experience
+            </h3>
+            <div class="timeline pl-6">
+              <div class="timeline-item">
+                <span class="inline-block bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full mb-2">Sep 2025</span>
+                <h4 class="text-xl font-bold mb-1">Web Developer Intern - CodeClause</h4>
+                <p class="text-gray-600 dark:text-gray-400 mb-2">Remote</p>
+                <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 space-y-1">
+                  <li>Developed a Weather Web App using HTML, JavaScript, Bootstrap, and OpenWeatherMap API</li>
+                  <li>Built a Shopping Cart Website with add/remove items and responsive UI</li>
+                </ul>
+              </div>
+              <div class="timeline-item">
+                <span class="inline-block bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full mb-2">2019 — Present</span>
+                <h4 class="text-xl font-bold mb-1">Open Source Contributor</h4>
+                <p class="text-gray-600 dark:text-gray-400">Contributing to open source projects, enhancing problem-solving and coding skills.</p>
               </div>
             </div>
           </div>
         </div>
         
         <!-- Skills -->
-        <div class="custom-card p-4 fade-in">
-          <h3 class="h4 mb-4"><i class="bi bi-tools me-2"></i>Skills</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>Python</span>
-                  <span>85%</span>
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg card-hover">
+          <h3 class="text-2xl font-bold mb-6 flex items-center">
+            <i class="bx bx-cog text-primary-600 dark:text-primary-400 mr-3"></i> Skills
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Python</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">85%</span>
                 </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>JavaScript</span>
-                  <span>80%</span>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 80%"></div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 85%"></div>
                 </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>HTML/CSS</span>
-                  <span>90%</span>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">JavaScript</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">80%</span>
                 </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 90%"></div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 80%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">HTML/CSS</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">90%</span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 90%"></div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>Bootstrap</span>
-                  <span>85%</span>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Bootstrap</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">85%</span>
                 </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>SQL</span>
-                  <span>75%</span>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 75%"></div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 85%"></div>
                 </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-name">
-                  <span>Git</span>
-                  <span>80%</span>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">SQL</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">75%</span>
                 </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 80%"></div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Git</span>
+                  <span class="text-primary-600 dark:text-primary-400 font-medium">80%</span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-primary-600 h-2.5 rounded-full" style="width: 80%"></div>
                 </div>
               </div>
             </div>
@@ -687,44 +387,48 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
-      <div class="container">
-        <h2 class="section-title">Portfolio</h2>
-        <p class="text-center mb-5">Here are some of my popular GitHub repositories with 40+ stars.</p>
+    <section id="portfolio" class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center relative">
+          <span class="gradient-text">Portfolio</span>
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent-500 rounded-full mt-2"></span>
+        </h2>
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">Here are some of my popular GitHub repositories with 40+ stars. Each project represents my dedication to creating clean, functional, and user-friendly applications.</p>
         
-        <div class="row g-4" id="projectsContainer">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
           <!-- Projects will be dynamically loaded here -->
-          <div class="col-12 text-center">
-            <div class="spinner" id="loadingSpinner"></div>
+          <div class="col-span-full text-center">
+            <div class="spinner mx-auto" id="loadingSpinner"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <div class="custom-card p-4 p-md-5 fade-in">
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="bi bi-telephone"></i>
-                </div>
-                <div>
-                  <h5 class="mb-1">Phone</h5>
-                  <p class="mb-0">+91-1234567890</p>
-                </div>
+    <section id="contact" class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center relative">
+          <span class="gradient-text">Contact</span>
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent-500 rounded-full mt-2"></span>
+        </h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg card-hover">
+            <div class="flex items-start mb-8">
+              <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl mr-4">
+                <i class="bx bx-phone"></i>
               </div>
-              <div class="contact-info-item">
-                <div class="contact-icon">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div>
-                  <h5 class="mb-1">Email</h5>
-                  <p class="mb-0">example@outlook.com</p>
-                </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Phone</h3>
+                <p class="text-gray-600 dark:text-gray-400">+91-1234567890</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center text-accent-600 dark:text-accent-400 text-xl mr-4">
+                <i class="bx bx-envelope"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Email</h3>
+                <p class="text-gray-600 dark:text-gray-400">example@outlook.com</p>
               </div>
             </div>
           </div>
@@ -734,40 +438,43 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer text-center">
-    <div class="container">
-      <div class="d-flex justify-content-center mb-4">
-        <a href="https://github.com/OshekharO" class="btn btn-outline-primary btn-sm mx-2" target="_blank" aria-label="GitHub profile">
-          <i class="bi bi-github me-1"></i> GitHub
-        </a>
-        <a href="https://linkedin.com/in/oshekher" class="btn btn-outline-primary btn-sm mx-2" target="_blank" aria-label="LinkedIn profile">
-          <i class="bi bi-linkedin me-1"></i> LinkedIn
-        </a>
-        <a href="https://twitter.com/OshekharO" class="btn btn-outline-primary btn-sm mx-2" target="_blank" aria-label="Twitter profile">
-          <i class="bi bi-twitter me-1"></i> Twitter
-        </a>
+  <footer class="py-12 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-2xl font-bold gradient-text mb-2">Saksham Shekher</h3>
+          <p class="text-gray-600 dark:text-gray-400">Web Developer & Open Source Enthusiast</p>
+        </div>
+        <div class="flex space-x-4 mb-6 md:mb-0">
+          <a href="https://github.com/OshekharO" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary-600 hover:text-white transition-all duration-300" target="_blank" aria-label="GitHub profile">
+            <i class="bx bxl-github text-xl"></i>
+          </a>
+          <a href="https://linkedin.com/in/oshekher" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary-600 hover:text-white transition-all duration-300" target="_blank" aria-label="LinkedIn profile">
+            <i class="bx bxl-linkedin text-xl"></i>
+          </a>
+          <a href="https://twitter.com/OshekharO" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary-600 hover:text-white transition-all duration-300" target="_blank" aria-label="Twitter profile">
+            <i class="bx bxl-twitter text-xl"></i>
+          </a>
+        </div>
       </div>
-      <p class="mb-0">&copy; 2025 Saksham Shekher. All rights reserved.</p>
+      <div class="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8 text-center text-gray-600 dark:text-gray-400">
+        <p>&copy; 2025 Saksham Shekher. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
   <script>
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
     
     themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-bs-theme', newTheme);
-      themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-      
-      // Save theme preference to localStorage
-      localStorage.setItem('theme', newTheme);
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
     });
 
     // Check for saved theme preference or prefer-color-scheme
@@ -775,15 +482,9 @@
       const savedTheme = localStorage.getItem('theme');
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       
-      let theme = 'light';
-      if (savedTheme) {
-        theme = savedTheme;
-      } else if (systemPrefersDark) {
-        theme = 'dark';
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
       }
-      
-      document.documentElement.setAttribute('data-bs-theme', theme);
-      themeIcon.className = theme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
     }
 
     // Function to load GitHub repositories with 40+ stars
@@ -809,31 +510,31 @@
         
         // If no popular repos found, show a message
         if (popularRepos.length === 0) {
-          projectsContainer.innerHTML = '<div class="col-12 text-center"><p>No repositories with 40+ stars found. Check back later!</p></div>';
+          projectsContainer.innerHTML = '<div class="col-span-full text-center"><p class="text-gray-600 dark:text-gray-400">No repositories with 40+ stars found. Check back later!</p></div>';
           return;
         }
         
         // Display popular repositories
         popularRepos.forEach(repo => {
           const projectCol = document.createElement('div');
-          projectCol.className = 'col-md-6 col-lg-4';
+          projectCol.className = 'group';
           
           projectCol.innerHTML = `
-            <div class="project-card custom-card">
-              <div class="project-image">
-                <i class="bi bi-folder" aria-hidden="true"></i>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg card-hover h-full flex flex-col">
+              <div class="h-48 bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center text-white text-5xl">
+                <i class="bx bx-folder"></i>
               </div>
-              <div class="p-4">
-                <h3 class="h5">${repo.name}</h3>
-                <p class="text-muted">${repo.description || 'No description available'}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <a href="${repo.html_url}" class="btn btn-sm btn-outline-primary" target="_blank" aria-label="View ${repo.name} code">View Code</a>
-                  <span class="badge bg-primary">⭐ ${repo.stargazers_count}</span>
+              <div class="p-6 flex-grow">
+                <h3 class="text-xl font-bold mb-2">${repo.name}</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">${repo.description || 'No description available'}</p>
+                <div class="flex justify-between items-center mt-auto">
+                  <a href="${repo.html_url}" class="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium flex items-center group-hover:underline" target="_blank" aria-label="View ${repo.name} code">
+                    View Code <i class="bx bx-link-external ml-1"></i>
+                  </a>
+                  <span class="inline-flex items-center bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-sm font-medium px-3 py-1 rounded-full">
+                    <i class="bx bx-star mr-1"></i> ${repo.stargazers_count}
+                  </span>
                 </div>
-              </div>
-              <div class="project-overlay">
-                <a href="${repo.html_url}" class="btn btn-primary me-2" target="_blank" aria-label="View ${repo.name} code">Code</a>
-                ${repo.homepage ? `<a href="${repo.homepage}" class="btn btn-light" target="_blank" aria-label="View ${repo.name} demo">Demo</a>` : ''}
               </div>
             </div>
           `;
@@ -843,7 +544,7 @@
       } catch (error) {
         console.error('Error fetching GitHub repositories:', error);
         loadingSpinner.style.display = 'none';
-        projectsContainer.innerHTML = '<div class="col-12 text-center"><p>Unable to load projects at this time. Please try again later.</p></div>';
+        projectsContainer.innerHTML = '<div class="col-span-full text-center"><p class="text-gray-600 dark:text-gray-400">Unable to load projects at this time. Please try again later.</p></div>';
       }
     }
 
@@ -859,7 +560,7 @@
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link, .btn[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
@@ -873,15 +574,6 @@
             top: targetSection.offsetTop - 80,
             behavior: 'smooth'
           });
-          
-          // Update active nav link
-          document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-          });
-          this.classList.add('active');
-          
-          // Update URL without page refresh
-          history.pushState(null, null, targetId);
         }
       });
     });
@@ -903,12 +595,12 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            entry.target.classList.add('animate-fade-in');
           }
         });
       }, observerOptions);
       
-      document.querySelectorAll('.custom-card').forEach(card => {
+      document.querySelectorAll('.card-hover').forEach(card => {
         observer.observe(card);
       });
     });
