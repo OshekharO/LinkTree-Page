@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with Bootstrap 5 featuring dark/light theme toggle, GitHub API integration, and optimized for SEO and mobile devices.
+A responsive LinkTree-style author page with a centered layout, profile image, bio, and social links using Tailwind CSS.
 
 ## 🌟 Features
 
