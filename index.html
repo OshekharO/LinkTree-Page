@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saksham Shekher (@OshekharO) - Web and Python developer. Explore my portfolio, projects, and connect with me on various social platforms.">
+    <meta name="keywords" content="Saksham Shekher, OshekharO, web developer, python developer, portfolio, projects">
+    <meta name="author" content="Saksham Shekher">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Saksham Shekher - LinkTree">
+    <meta property="og:description" content="Web and Python developer. Explore my portfolio, projects, and connect with me.">
+    <meta property="og:image" content="https://8upload.com/image/68f3434c46310/IMG_20250924_065142.jpg?raw=1">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Saksham Shekher - LinkTree">
+    <meta name="twitter:description" content="Web and Python developer. Explore my portfolio, projects, and connect with me.">
+    <meta name="twitter:image" content="https://8upload.com/image/68f3434c46310/IMG_20250924_065142.jpg?raw=1">
+    
     <title>Saksham Shekher - LinkTree</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Resource hints for external resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://8upload.com">
+    
+    <!-- Optimized font loading -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -22,11 +48,28 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .social-icon {
+        .link-button {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .link-button:hover {
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .social-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
         }
         .social-link:hover .social-icon {
             transform: scale(1.2);
+        }
+        .project-icon {
+            transition: transform 0.3s ease;
         }
         .project-link:hover .project-icon {
             transform: translateX(5px);
@@ -39,9 +82,13 @@
         <div class="flex justify-center mb-6">
             <div class="relative">
                 <img src="https://8upload.com/image/68f3434c46310/IMG_20250924_065142.jpg?raw=1" 
-                     alt="Saksham Shekher" 
-                     class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white shadow-lg mx-auto object-cover">
-                <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
+                     alt="Saksham Shekher profile picture" 
+                     class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white shadow-lg mx-auto object-cover"
+                     loading="eager"
+                     fetchpriority="high"
+                     width="112"
+                     height="112">
+                <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-white" aria-label="Online status indicator"></div>
             </div>
         </div>
         
@@ -53,98 +100,100 @@
         </div>
         
         <!-- Social Links -->
-        <div class="space-y-4 mb-8">
-            <a href="https://www.oneindia.eu.org/" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fas fa-blog text-purple-600 social-icon mr-3"></i>
-                <span class="font-medium">Blog</span>
-            </a>
-            
-            <a href="https://saksham.thedev.id" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fas fa-briefcase text-blue-500 social-icon mr-3"></i>
-                <span class="font-medium">Portfolio</span>
-            </a>
-            
-            <a href="https://github.com/OshekharO" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-github text-gray-800 social-icon mr-3"></i>
-                <span class="font-medium">GitHub</span>
-            </a>
-            
-            <a href="https://www.facebook.com/Oshekher/" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-facebook text-blue-600 social-icon mr-3"></i>
-                <span class="font-medium">Facebook</span>
-            </a>
-            
-            <a href="https://www.linkedin.com/in/oshekher" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-linkedin text-blue-700 social-icon mr-3"></i>
-                <span class="font-medium">LinkedIn</span>
-            </a>
-            
-            <a href="https://truthsocial.com/@OshekherO" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fas fa-dove text-red-500 social-icon mr-3"></i>
-                <span class="font-medium">Truth Social</span>
-            </a>
-            
-            <a href="https://bsky.app/profile/oshekharo.bsky.social" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fas fa-cloud text-sky-500 social-icon mr-3"></i>
-                <span class="font-medium">Bluesky</span>
-            </a>
-            
-            <a href="https://www.instagram.com/oshekhero/" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-instagram text-pink-500 social-icon mr-3"></i>
-                <span class="font-medium">Instagram</span>
-            </a>
-            
-            <a href="https://x.com/OshekharO" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-twitter text-black social-icon mr-3"></i>
-                <span class="font-medium">Twitter</span>
-            </a>
-            
-            <a href="https://mastodon.social/@oshekharo" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-mastodon text-purple-700 social-icon mr-3"></i>
-                <span class="font-medium">Mastodon</span>
-            </a>
-            
-            <a href="https://t.me/DuskDrifter" class="social-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
-                <i class="fab fa-telegram text-blue-400 social-icon mr-3"></i>
-                <span class="font-medium">Telegram</span>
-            </a>
-        </div>
-        
-        <!-- Notable Projects Section -->
-        <div class="mb-6">
-            <h2 class="text-xl font-bold text-white mb-4">Notable Projects</h2>
-            <div class="space-y-3">
-                <a href="https://indexer.is-an.app/" class="project-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-between">
-                    <span class="font-medium">Indexer</span>
-                    <i class="fas fa-arrow-right text-purple-600 project-icon transition-transform"></i>
+        <nav aria-label="Social media links">
+            <div class="space-y-4 mb-8">
+                <a href="https://www.oneindia.eu.org/" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my blog">
+                    <i class="fas fa-blog text-purple-600 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Blog</span>
                 </a>
                 
-                <a href="https://scrape.foo.ng/" class="project-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-between">
-                    <span class="font-medium">Scrape Tool</span>
-                    <i class="fas fa-arrow-right text-blue-500 project-icon transition-transform"></i>
+                <a href="https://saksham.thedev.id" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my portfolio">
+                    <i class="fas fa-briefcase text-blue-500 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Portfolio</span>
                 </a>
                 
-                <a href="http://search.is-a-good.dev/" class="project-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-between">
-                    <span class="font-medium">Search Engine</span>
-                    <i class="fas fa-arrow-right text-green-500 project-icon transition-transform"></i>
+                <a href="https://github.com/OshekharO" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
+                    <i class="fab fa-github text-gray-800 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">GitHub</span>
                 </a>
                 
-                <a href="https://uncoder.eu.org/" class="project-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-between">
-                    <span class="font-medium">Uncoder</span>
-                    <i class="fas fa-arrow-right text-red-500 project-icon transition-transform"></i>
+                <a href="https://www.facebook.com/Oshekher/" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Facebook profile">
+                    <i class="fab fa-facebook text-blue-600 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Facebook</span>
                 </a>
                 
-                <a href="https://badoo.eu.org/" class="project-link block bg-white/90 hover:bg-white rounded-xl py-3 px-4 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-between">
-                    <span class="font-medium">Web Terminal</span>
-                    <i class="fas fa-arrow-right text-yellow-500 project-icon transition-transform"></i>
+                <a href="https://www.linkedin.com/in/oshekher" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                    <i class="fab fa-linkedin text-blue-700 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">LinkedIn</span>
+                </a>
+                
+                <a href="https://truthsocial.com/@OshekherO" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Truth Social profile">
+                    <i class="fas fa-dove text-red-500 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Truth Social</span>
+                </a>
+                
+                <a href="https://bsky.app/profile/oshekharo.bsky.social" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Bluesky profile">
+                    <i class="fas fa-cloud text-sky-500 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Bluesky</span>
+                </a>
+                
+                <a href="https://www.instagram.com/oshekhero/" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Instagram profile">
+                    <i class="fab fa-instagram text-pink-500 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Instagram</span>
+                </a>
+                
+                <a href="https://x.com/OshekharO" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Twitter profile">
+                    <i class="fab fa-twitter text-black social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Twitter</span>
+                </a>
+                
+                <a href="https://mastodon.social/@oshekharo" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Visit my Mastodon profile">
+                    <i class="fab fa-mastodon text-purple-700 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Mastodon</span>
+                </a>
+                
+                <a href="https://t.me/DuskDrifter" class="social-link link-button justify-center" rel="noopener noreferrer" aria-label="Contact me on Telegram">
+                    <i class="fab fa-telegram text-blue-400 social-icon" aria-hidden="true"></i>
+                    <span class="font-medium">Telegram</span>
                 </a>
             </div>
-        </div>
+        </nav>
+        
+        <!-- Notable Projects Section -->
+        <section aria-labelledby="projects-heading">
+            <h2 id="projects-heading" class="text-xl font-bold text-white mb-4">Notable Projects</h2>
+            <div class="space-y-3">
+                <a href="https://indexer.is-an.app/" class="project-link link-button justify-between" rel="noopener noreferrer" aria-label="View Indexer project">
+                    <span class="font-medium">Indexer</span>
+                    <i class="fas fa-arrow-right text-purple-600 project-icon" aria-hidden="true"></i>
+                </a>
+                
+                <a href="https://scrape.foo.ng/" class="project-link link-button justify-between" rel="noopener noreferrer" aria-label="View Scrape Tool project">
+                    <span class="font-medium">Scrape Tool</span>
+                    <i class="fas fa-arrow-right text-blue-500 project-icon" aria-hidden="true"></i>
+                </a>
+                
+                <a href="http://search.is-a-good.dev/" class="project-link link-button justify-between" rel="noopener noreferrer" aria-label="View Search Engine project">
+                    <span class="font-medium">Search Engine</span>
+                    <i class="fas fa-arrow-right text-green-500 project-icon" aria-hidden="true"></i>
+                </a>
+                
+                <a href="https://uncoder.eu.org/" class="project-link link-button justify-between" rel="noopener noreferrer" aria-label="View Uncoder project">
+                    <span class="font-medium">Uncoder</span>
+                    <i class="fas fa-arrow-right text-red-500 project-icon" aria-hidden="true"></i>
+                </a>
+                
+                <a href="https://badoo.eu.org/" class="project-link link-button justify-between" rel="noopener noreferrer" aria-label="View Web Terminal project">
+                    <span class="font-medium">Web Terminal</span>
+                    <i class="fas fa-arrow-right text-yellow-500 project-icon" aria-hidden="true"></i>
+                </a>
+            </div>
+        </section>
         
         <!-- Footer -->
-        <div class="mt-8 text-white/70 text-sm">
+        <footer class="mt-8 text-white/70 text-sm">
             <p>© 2025 Saksham Shekher.</p>
-        </div>
+        </footer>
     </div>
 </body>
 </html>
